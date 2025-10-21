@@ -12,9 +12,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-// import { Icons } from "@/components/icons"; // opcional: seu set de icons
 import { MenuIcon, XIcon, Sun, Moon } from "lucide-react";
-import Image from "next/image";
 
 type NavItem = { label: string; href: string };
 
