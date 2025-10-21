@@ -42,18 +42,8 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
     <header className="w-full bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* logo */}
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg overflow-hidden">
-                <Image
-                  src="/logo.svg"
-                  alt="logo"
-                  className="w-full h-full object-cover"
-                    width={40}
-                    height={40}
-                />
-              </div>
               <span className="font-semibold text-lg">Márcio Sardou</span>
             </Link>
           </div>
