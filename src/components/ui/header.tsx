@@ -37,7 +37,7 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
   }
 
   return (
-    <header className="w-full bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+    <header className="w-full bg-background dark:bg-background backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-4">
@@ -52,7 +52,7 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium hover:text-sky-600 dark:hover:text-sky-400"
+                className="text-sm font-medium hover:text-sky-600 dark:hover:text-chart-4"
               >
                 {item.label}
               </a>
@@ -117,7 +117,7 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="py-2 px-1 text-sm font-medium hover:text-sky-600 dark:hover:text-sky-400"
+                      className="py-2 px-1 text-sm font-medium hover:text-sky-600 dark:hover:text-blue-600"
                     >
                       {item.label}
                     </a>
