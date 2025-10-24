@@ -6,34 +6,37 @@ import Hero from "@/components/hero";
 import Projects from "@/components/projects";
 import Skills from "@/components/skills";
 import Header from "@/components/ui/header";
-import { Separator } from "@radix-ui/react-separator";
 import React from "react";
 
-export default function page() {
+const GradientSeparator = () => (
+  <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent " />
+);
+
+export default function Page() {
   return (
-    <div className="bg-background h-full text-white">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <Header />
       <Hero />
-      <main className="max-w-6xl mx-auto">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 py-20">
         <About />
 
-        <Separator className=" h-0.5 bg-neutral-200 dark:bg-neutral-700" />
+        <GradientSeparator />
 
         <Experiences />
 
-        <Separator className=" h-0.5 bg-neutral-200 dark:bg-neutral-700" />
+        <GradientSeparator />
 
         <Projects />
 
-        <Separator className=" h-0.5 bg-neutral-200 dark:bg-neutral-700" />
+        <GradientSeparator />
 
         <Skills />
 
-        <Separator className=" h-0.5 bg-neutral-200 dark:bg-neutral-700" />
+        <GradientSeparator />
 
         <Certifications />
 
-        <Separator className=" h-0.5 bg-neutral-200 dark:bg-neutral-700" />
+        <GradientSeparator />
 
         <Contact />
       </main>

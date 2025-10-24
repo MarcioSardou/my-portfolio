@@ -13,6 +13,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { MenuIcon, XIcon, Sun, Moon } from "lucide-react";
+import { useDarkMode } from "@/hook/useDarkMode";
 
 type NavItem = { label: string; href: string };
 
@@ -25,26 +26,19 @@ const defaultNav: NavItem[] = [
 
 export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(
-    typeof document !== "undefined" &&
-      document.documentElement.classList.contains("dark")
-  );
-
-  function toggleDark() {
-    const root = document.documentElement;
-    root.classList.toggle("dark");
-    setDark(root.classList.contains("dark"));
-  }
+  const { dark, toggleDark } = useDarkMode();
 
   return (
-    <header className="w-full bg-background dark:bg-background backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+    <header className="w-full bg-background/80 backdrop-blur-lg border-b border-border transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-3">
-              <span className="font-semibold text-lg">Márcio Sardou</span>
-            </Link>
-          </div>
+          {/* logo */}
+          <Link
+            href="/"
+            className="flex items-center gap-3 text-lg font-semibold text-foreground hover:text-accent transition-colors"
+          >
+            Márcio Sardou
+          </Link>
 
           {/* desktop nav */}
           <nav className="hidden md:flex items-center gap-6">
@@ -52,27 +46,32 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium hover:text-sky-600 dark:hover:text-chart-4"
+                className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors"
               >
                 {item.label}
               </a>
             ))}
-            <Button asChild>
-              <a href="#contact" className="ml-2">
-                Trabalhe comigo
-              </a>
+
+            <Button
+              asChild
+              className="ml-2 bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              <a href="#contact">Trabalhe comigo</a>
             </Button>
+
+            {/* theme toggle */}
             <button
               aria-label="toggle theme"
               onClick={toggleDark}
-              className="ml-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="ml-2 p-2 rounded-md hover:bg-muted transition-colors"
             >
               {dark ? (
-                <Sun className="w-4 h-4" />
+                <Sun className="w-4 h-4 text-yellow-300" />
               ) : (
-                <Moon className="w-4 h-4" />
+                <Moon className="w-4 h-4 text-purple-400" />
               )}
             </button>
+
             <Avatar>
               <AvatarImage src="/avatar.jpg" alt="avatar" />
               <AvatarFallback>MS</AvatarFallback>
@@ -84,28 +83,33 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
             <button
               aria-label="toggle theme"
               onClick={toggleDark}
-              className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="p-2 rounded-md hover:bg-muted transition-colors"
             >
               {dark ? (
-                <Sun className="w-5 h-5" />
+                <Sun className="w-5 h-5 text-yellow-300" />
               ) : (
-                <Moon className="w-5 h-5" />
+                <Moon className="w-5 h-5 text-purple-400" />
               )}
             </button>
 
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <button className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
-                  <MenuIcon className="w-5 h-5" />
+                <button className="p-2 rounded-md hover:bg-muted transition-colors">
+                  <MenuIcon className="w-5 h-5 text-foreground" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-72">
+              <SheetContent
+                side="right"
+                className="w-72 bg-background text-foreground border-l border-border"
+              >
                 <SheetHeader>
                   <div className="flex items-center justify-between">
-                    <SheetTitle>Menu</SheetTitle>
+                    <SheetTitle className="text-lg font-semibold text-foreground">
+                      Menu
+                    </SheetTitle>
                     <SheetClose asChild>
                       <button aria-label="close">
-                        <XIcon className="w-5 h-5" />
+                        <XIcon className="w-5 h-5 text-muted-foreground" />
                       </button>
                     </SheetClose>
                   </div>
@@ -117,7 +121,7 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="py-2 px-1 text-sm font-medium hover:text-sky-600 dark:hover:text-blue-600"
+                      className="py-2 px-1 text-sm font-medium text-muted-foreground hover:text-accent transition-colors"
                     >
                       {item.label}
                     </a>
@@ -128,20 +132,24 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
                     onClick={() => setOpen(false)}
                     className="mt-2"
                   >
-                    <Button>Trabalhe comigo</Button>
+                    <Button className="w-full bg-primary text-primary-foreground hover:bg-accent">
+                      Trabalhe comigo
+                    </Button>
                   </a>
                 </div>
 
-                <div className="mt-6 border-t border-gray-100 dark:border-gray-800 pt-4">
+                <div className="mt-6 border-t border-border pt-4">
                   <div className="flex items-center gap-3">
                     <Avatar>
                       <AvatarImage src="/avatar.jpg" alt="avatar" />
                       <AvatarFallback>MS</AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className="text-sm font-medium">Márcio Sardou</p>
+                      <p className="text-sm font-medium text-foreground">
+                        Márcio Sardou
+                      </p>
                       <p className="text-xs text-muted-foreground">
-                        Frontend dev
+                        Frontend Developer
                       </p>
                     </div>
                   </div>
