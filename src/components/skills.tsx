@@ -68,7 +68,7 @@ const levelToPercent: Record<Level, number> = {
 
 export default function SkillsSection() {
   return (
-    <section className="py-16 bg-background text-foreground">
+    <section id="skills" className="py-16 bg-background text-foreground">
       <div className="mx-auto px-4">
         <h2 className="text-3xl font-bold mb-10 text-center">Minhas Skills</h2>
 

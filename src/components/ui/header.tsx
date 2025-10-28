@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Sheet,
   SheetContent,
@@ -12,7 +11,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-import { MenuIcon, XIcon, Sun, Moon } from "lucide-react";
+import { MenuIcon, Sun, Moon } from "lucide-react";
 import { useDarkMode } from "@/hook/useDarkMode";
 
 type NavItem = { label: string; href: string };
@@ -21,6 +20,8 @@ const defaultNav: NavItem[] = [
   { label: "Sobre", href: "#about" },
   { label: "Trabalhos", href: "#work" },
   { label: "Blog", href: "#blog" },
+  { label: "Projetos", href: "#projects" },
+  { label: "Skills", href: "#skills" },
   { label: "Contato", href: "#contact" },
 ];
 
@@ -29,7 +30,7 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
   const { dark, toggleDark } = useDarkMode();
 
   return (
-    <header className="w-full bg-background/80 backdrop-blur-lg border-b border-border transition-colors duration-300">
+    <header className="fixed w-full bg-background/80 backdrop-blur-lg border-b border-border transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* logo */}
@@ -68,14 +69,9 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
               {dark ? (
                 <Sun className="w-4 h-4 text-yellow-300" />
               ) : (
-                <Moon className="w-4 h-4 text-purple-400" />
+                <Moon className="w-4 h-4 text-primary" />
               )}
             </button>
-
-            <Avatar>
-              <AvatarImage src="/avatar.jpg" alt="avatar" />
-              <AvatarFallback>MS</AvatarFallback>
-            </Avatar>
           </nav>
 
           {/* mobile */}
@@ -88,7 +84,7 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
               {dark ? (
                 <Sun className="w-5 h-5 text-yellow-300" />
               ) : (
-                <Moon className="w-5 h-5 text-purple-400" />
+                <Moon className="w-5 h-5 text-primary" />
               )}
             </button>
 
@@ -100,18 +96,14 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-72 bg-background text-foreground border-l border-border"
+                className="w-72 p-4 bg-background text-foreground border-l border-border"
               >
                 <SheetHeader>
                   <div className="flex items-center justify-between">
                     <SheetTitle className="text-lg font-semibold text-foreground">
                       Menu
                     </SheetTitle>
-                    <SheetClose asChild>
-                      <button aria-label="close">
-                        <XIcon className="w-5 h-5 text-muted-foreground" />
-                      </button>
-                    </SheetClose>
+                    <SheetClose asChild />
                   </div>
                 </SheetHeader>
 
@@ -121,7 +113,7 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="py-2 px-1 text-sm font-medium text-muted-foreground hover:text-accent transition-colors"
+                      className="py-2 px-1 text-sm font-medium  text-muted-foreground hover:text-accent transition-colors"
                     >
                       {item.label}
                     </a>
@@ -133,26 +125,9 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
                     className="mt-2"
                   >
                     <Button className="w-full bg-primary text-primary-foreground hover:bg-accent">
-                      Trabalhe comigo
+                      Download CV
                     </Button>
                   </a>
-                </div>
-
-                <div className="mt-6 border-t border-border pt-4">
-                  <div className="flex items-center gap-3">
-                    <Avatar>
-                      <AvatarImage src="/avatar.jpg" alt="avatar" />
-                      <AvatarFallback>MS</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="text-sm font-medium text-foreground">
-                        Márcio Sardou
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Frontend Developer
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>

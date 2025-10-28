@@ -31,58 +31,71 @@
 :root {
   --radius: 0.625rem;
 
-  /* modo claro (inspirado em Dracula Soft) */
-  --background: #f8f8f2;
-  --foreground: #282a36;
+  /* 🌤️ Tema Claro — com base nas cores #40ffaa e #4079ff */
+  --background: #f9fafb;
+  --foreground: #111827;
   --card: #ffffff;
-  --card-foreground: #282a36;
+  --card-foreground: #1f2937;
   --popover: #ffffff;
-  --popover-foreground: #282a36;
-  --primary: #6272a4;
-  --primary-foreground: #f8f8f2;
-  --secondary: #bd93f9;
-  --secondary-foreground: #282a36;
-  --muted: #e9e9ef;
-  --muted-foreground: #44475a;
-  --accent: #ff79c6;
-  --accent-foreground: #f8f8f2;
-  --destructive: #ff5555;
-  --border: #dcdce0;
-  --input: #dcdce0;
-  --ring: #bd93f9;
+  --popover-foreground: #1f2937;
+
+  --primary: #4079ff;
+  --primary-foreground: #ffffff;
+  --secondary: #40ffaa;
+  --secondary-foreground: #111827;
+
+  --muted: #f3f4f6;
+  --muted-foreground: #4b5563;
+  --accent: #40ffaa;
+  --accent-foreground: #111827;
+  --destructive: #ef4444;
+
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #4079ff;
 }
 
 .dark {
-  /* modo Dracula clássico */
-  --background: #282a36;
-  --foreground: #f8f8f2;
-  --card: #343746;
-  --card-foreground: #f8f8f2;
-  --popover: #343746;
-  --popover-foreground: #f8f8f2;
-  --primary: #bd93f9;
-  --primary-foreground: #282a36;
-  --secondary: #6272a4;
-  --secondary-foreground: #f8f8f2;
-  --muted: #44475a;
-  --muted-foreground: #f8f8f2;
-  --accent: #ff79c6;
-  --accent-foreground: #282a36;
-  --destructive: #ff5555;
-  --border: #44475a;
-  --input: #44475a;
-  --ring: #8be9fd;
+  /* 🌙 Tema Escuro — contraste equilibrado com tons neon sutis */
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+
+  --primary: #40ffaa;
+  --primary-foreground: #0f172a;
+  --secondary: #4079ff;
+  --secondary-foreground: #f8fafc;
+
+  --muted: #334155;
+  --muted-foreground: #e2e8f0;
+  --accent: #40ffaa;
+  --accent-foreground: #0f172a;
+  --destructive: #f87171;
+
+  --border: #334155;
+  --input: #334155;
+  --ring: #40ffaa;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground transition-colors duration-300;
   }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  /* Suaviza as transições de cor e fonte */
+  html {
+    scroll-behavior: smooth;
   }
 }

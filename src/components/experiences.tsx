@@ -44,7 +44,7 @@ export default function Experiences() {
   ];
 
   return (
-    <section id="experiences" className="py-20">
+    <section id="work" className="py-20">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold mb-10 text-gray-900 dark:text-gray-100">
           Experiências
