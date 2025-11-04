@@ -36,10 +36,7 @@ const contacts = [
 
 export default function ContactSection() {
   return (
-    <footer
-      id="contact"
-      className="py-20 bg-background text-foreground border-t border-border"
-    >
+    <footer id="contact" className="bg-background text-foreground">
       <div className="max-w-4xl mx-auto px-4 flex flex-col items-center text-center">
         <motion.h2
           className="text-3xl font-bold mb-4"

@@ -30,7 +30,7 @@ export default function Header({ nav = defaultNav }: { nav?: NavItem[] }) {
   const { dark, toggleDark } = useDarkMode();
 
   return (
-    <header className="fixed w-full bg-background/80 backdrop-blur-lg border-b border-border transition-colors duration-300">
+    <header className="fixed w-full bg-background/80 backdrop-blur-lg border-b border-border transition-colors duration-300 z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* logo */}
